@@ -45,7 +45,7 @@ def table(rr):
     return head+'\n'.join(f"| {r['noise_sigma']} | {r['method']} | {float(r['RMSE']):.4f} | {float(r['PSNR_dB']):.2f} | {float(r['SAM_deg']):.2f} | {float(r['macro_F1']):.4f} |" for r in rr)
 
 selected=[r for r in rows if r['split']=='spatial' and r['scope']=='external_field']
-text='''# 成员 B 实验结果与交接报告
+text='''# 成员 实验结果与交接报告
 
 ## 完成范围
 
@@ -109,7 +109,7 @@ text+='''
 
 完整命令见 README_B.md；依赖版本和耗时见各 run_manifest.json。PNG用于汇报，SVG用于编辑，NPZ/CSV用于复核；查看器可本地切换结果。
 
-本机已执行训练与输出验证；尚未由其他同学在独立环境完成交叉验证。当前不是课程Git仓库，不声称已推送或建立PR。年度目录按Issue暂定2026-2027，合并前由C核对仓库命名。汇报最终PDF由C整合，本文提供B部分讲稿。2021论文是否满足“近年”需由A确认并补充。
+本机已执行训练与输出验证；尚未由其他同学在独立环境完成交叉验证。材料已整合到第11章总PR，远程状态以实际页面为准。年度目录采用仓库现有的2026-2027学年。汇报最终PDF由成员整合，本文提供成员讲稿。2021论文为案例来源，本章已另补2024—2026年前沿文献。
 
 ## 来源
 
@@ -127,7 +127,7 @@ text+='\n空间训练区类别0/1/2像素数：'+str(np.bincount(truth.ravel()[s
 (docs/'B_results.md').write_text(text,encoding='utf8')
 
 qdir=root/'resources/annual/2026-2027/questions';qdir.mkdir(parents=True,exist_ok=True)
-q='''# 传承题：噪声、组分图与数据划分（成员B实验依据，供A定稿）
+q='''# 传承题：噪声、组分图与数据划分（成员实验依据，供成员定稿）
 
 ## 题目
 
@@ -175,11 +175,12 @@ fig.suptitle('SYNTHETIC ONLY | External field | Spatial training split');fig.tig
 fig.savefig(root/'results/synthetic/quality_summary.png',dpi=180,bbox_inches='tight');fig.savefig(root/'results/synthetic/quality_summary.svg',bbox_inches='tight');plt.close(fig)
 from html import escape
 cells=''.join('<tr>'+''.join('<td>'+escape(str(v))+'</td>' for v in [r['noise_sigma'],r['method'],f"{float(r['RMSE']):.4f}",f"{float(r['SAM_deg']):.2f}",f"{float(r['macro_F1']):.4f}"])+'</tr>' for r in selected)
-page='''<!doctype html><html lang="zh-CN"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>G11 成员B交付</title><style>body{font:17px/1.7 system-ui,'Microsoft YaHei';max-width:1100px;margin:35px auto;padding:0 20px;color:#183149;background:#f4f7fb}h1,h2{line-height:1.3}section{background:white;padding:22px;margin:20px 0;border-radius:14px}a{color:#175ca4}img{width:100%}table{border-collapse:collapse;width:100%}td,th{padding:8px;border-bottom:1px solid #dde4ec;text-align:left}.note{border-left:5px solid #dc9a38;padding:15px;background:#fff7e7}</style>
-<h1>化学成像：成员 B 实验交付</h1><p>数据 → 预处理 → 传统方法与深度学习 → 组分类别图 → 质量评价</p>
+page='''<!doctype html><html lang="zh-CN"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>G11 成员交付</title><style>body{font:17px/1.7 system-ui,'Microsoft YaHei';max-width:1100px;margin:35px auto;padding:0 20px;color:#183149;background:#f4f7fb}h1,h2{line-height:1.3}section{background:white;padding:22px;margin:20px 0;border-radius:14px}a{color:#175ca4}img{width:100%}table{border-collapse:collapse;width:100%}td,th{padding:8px;border-bottom:1px solid #dde4ec;text-align:left}.note{border-left:5px solid #dc9a38;padding:15px;background:#fff7e7}</style>
+<h1>化学成像：成员 实验交付</h1><p>数据 → 预处理 → 传统方法与深度学习 → 组分类别图 → 质量评价</p>
 <p class="note">真实作者数据已运行；网络为本组教学简化实现。真实图没有逐像素真值，Cluster不是已确认矿物或浓度。模拟图单独用于有真值评价。</p>
 <section><h2>先看这些</h2><p><a href="README_B.md">运行与交接说明</a> · <a href="docs/B_results.md">完整中文结果报告</a> · <a href="docs/B_presentation_notes.md">汇报讲稿</a> · <a href="docs/verification.json">验证记录</a></p><p><a href="results/real/viewer.html">真实数据交互图</a> · <a href="results/synthetic/viewer.html">模拟数据交互图</a> · <a href="code/ch11_exercises/run.py">主代码</a></p></section>
 <section><h2>真实矿物：不同方法的空间类别图</h2><img src="results/real/real/spatial/component_maps.png"><p>FOV1训练，FOV2评估；训练区拟合归一化和聚类。颜色按训练区簇重叠对齐，仅用于比较显示。</p></section>
 <section><h2>模拟实验：已知真值下的质量评价</h2><img src="results/synthetic/quality_summary.png"><table><tr><th>噪声σ</th><th>方法</th><th>RMSE↓</th><th>SAM/度↓</th><th>宏F1↑</th></tr>TABLE_ROWS</table><p>每个噪声水平分别训练，固定种子单次运行；误差与分类指标不必一致，不代表真实矿物准确率。</p></section>
 <section><h2>交给组员</h2><p>A：技术正文片段、实验结果、引文、传承题实验依据。C：PNG/SVG图件、数值数据、讲稿和演示。最终汇报PDF、他人独立验证和GitHub PR仍需在小组流程中完成。</p><p><a href="resources/annual/2026-2027/questions/ch11_case_question_B.md">实验题与答案</a> · <a href="resources/annual/2026-2027/references/ch11_UHRED.md">来源与引文</a> · <a href="docs/PR_B.md">PR说明草稿</a></p></section></html>'''
 (root/'开始阅读.html').write_text(page.replace('TABLE_ROWS',cells),encoding='utf8')
+
