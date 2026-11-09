@@ -1,4 +1,4 @@
-# 第11章成员 B：UHRED 思路教学案例
+# 第11章成员：UHRED 思路教学案例
 
 关联任务：[课程 Issue #9](https://github.com/Oaham725/intelligent-analytical-chemistry/issues/9)。
 
@@ -10,7 +10,7 @@
 - [真实矿物组分类别图](results/real/real/spatial/component_maps.png)
 - [模拟噪声评价图](results/synthetic/quality_summary.png)
 - [全部指标：真实数据](results/real/metrics.csv)、[模拟数据](results/synthetic/metrics.csv)
-- [技术解释](docs/ch11_B_insert.md)、[B部分汇报讲稿](docs/B_presentation_notes.md)
+- [技术解释](docs/ch11_B_insert.md)、[成员汇报讲稿](docs/B_presentation_notes.md)
 - [实验题与答案](resources/annual/2026-2027/questions/ch11_case_question_B.md)
 - [论文、代码和数据来源](resources/annual/2026-2027/references/ch11_UHRED.md)
 - [本机验证记录](docs/verification.json)
@@ -52,4 +52,5 @@ python code/ch11_exercises/predict.py --model-dir results/real/real/spatial --da
 - 不同视野不保证不同样品、批次或仪器。真实矿物无干净参考和像素类别真值，不报告真实识别准确率，不把处理改变量当真实误差，也不把Cluster命名为已确认矿物或浓度。
 - 模拟解析光谱不是真实矿物谱；两视野共享几何布局而光谱和噪声不同。每个噪声水平单独训练，非固定模型抗噪测试；只报告固定种子725的教学结果。
 - 模拟组分标签仅用于最终评价及训练区簇编号匹配，不进入自编码器训练或模型选择。训练区必须覆盖全部类别。
-- 2021论文是案例来源，不自动满足年度近三年文献要求；A负责补充前沿文献，C负责基础图整合与最终汇报PDF。独立同学复核及交叉评审仍待完成。
+- 2021论文是案例来源；本次已补充2024—2026年前沿文献，基础图整合与最终汇报PDF由成员继续完善。独立同学复核及交叉评审仍待完成。
+
