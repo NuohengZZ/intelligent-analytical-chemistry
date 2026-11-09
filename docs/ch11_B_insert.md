@@ -1,4 +1,4 @@
-# 第11章案例补充：成员 B 技术稿
+# 第11章案例补充：成员 技术稿
 
 ## 从像素光谱到组分类别图
 
@@ -31,3 +31,4 @@
 类别图不等于浓度图。k-means 每个像素仅分到一簇，混合像素可能被强制归类；光谱峰形和相对强度也可能被网络改变。原论文明确模型不是严格定量设计，定量浓度、真实矿物名称和更广泛泛化均需额外验证。
 
 引用：P. Abdolghader et al., Optics Express 29(21), 34205–34219 (2021), https://doi.org/10.1364/OE.439662 。原代码：https://github.com/CLEANit/SRS2021 。数据入口：https://clean.energyscience.ca/datasets/ 。
+
