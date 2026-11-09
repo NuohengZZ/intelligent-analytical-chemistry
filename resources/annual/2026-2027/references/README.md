@@ -69,10 +69,20 @@
 <a id="ch11"></a>
 ## 第11章 化学成像、空间分辨率与多维数据
 
-- [成员A：完整文献、2024—2026年前沿更新卡与筛选记录](ch11-member-a.md)
+- [成员：完整文献、2024—2026年前沿更新卡与筛选记录](ch11-member-a.md)
 
 1. Weigert, M. *et al.* [Content-aware image restoration: pushing the limits of fluorescence microscopy](https://doi.org/10.1038/s41592-018-0216-7). *Nature Methods* **15**, 1090–1097 (2018).
    - 用途：讨论低信噪比图像恢复、空间分辨率提升与深度学习；配合本章强调恢复结果仍须受成像物理和验证样本约束。
+
+2. Abdolghader, P. *et al.* [Unsupervised hyperspectral stimulated Raman microscopy image enhancement: denoising and segmentation via one-shot deep learning](https://doi.org/10.1364/OE.439662). *Optics Express* **29**, 34205–34219 (2021).
+   - 用途：本章无监督光谱去噪及潜在空间聚类的可运行教学案例；[方法与复现边界](ch11_UHRED.md)。该条为案例来源，不替代近三年年度前沿更新。
+
+3. He, H. *et al.* [Noise learning of instruments for high-contrast, high-resolution and fast hyperspectral microscopy and nanoscopy](https://doi.org/10.1038/s41467-024-44864-5). *Nature Communications* **15**, 754 (2024).
+   - 用途：仪器噪声建模与弱拉曼测量。
+4. Georgiev, D. *et al.* [Hyperspectral unmixing for Raman spectroscopy via physics-constrained autoencoders](https://doi.org/10.1073/pnas.2407439121). *PNAS* **121**(45), e2407439121 (2024).
+   - 用途：物理约束解混与组分解释。
+5. Chen, Y. *et al.* [Self-optimized spectral distance for low-light high-throughput Raman hyperspectral imaging](https://doi.org/10.1038/s43588-026-00957-3). *Nature Computational Science* **6**, 603–616 (2026).
+   - 用途：低光拉曼重建的前沿更新，不作为已复现结果。
 
 <a id="ch12"></a>
 ## 第12章 生物分析、单细胞与多组学测量
@@ -136,4 +146,3 @@
 ```
 
 每年各章至少补入一篇近三年的原始研究、权威综述、标准或官方技术资料；若没有足以改变教材判断的新材料，应明确写“本年检索后未发现需要改写基础结论的证据”，并保留检索范围和日期。
-
