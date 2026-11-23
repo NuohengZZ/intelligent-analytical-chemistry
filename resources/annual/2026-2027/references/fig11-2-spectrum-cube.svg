@@ -1,0 +1,137 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="900" viewBox="0 0 1600 900">
+  <title>图11-2 X×Y×λ 光谱立方体：空间坐标、光谱维度与信号强度及处理流程</title>
+  <desc>左侧为 X×Y×λ 数据立方体，标出空间坐标 x、y、光谱轴 λ 与信号强度；中间为像素谱与波段图；右侧为从原始立方体到组分分布图的处理流程。</desc>
+  <defs>
+    <linearGradient id="cubeFace" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#dceaf7"/>
+      <stop offset="100%" stop-color="#a9cbe8"/>
+    </linearGradient>
+    <linearGradient id="frontFace" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#eef5fc"/>
+      <stop offset="100%" stop-color="#c9dff1"/>
+    </linearGradient>
+    <marker id="arrow" markerWidth="12" markerHeight="12" refX="9" refY="6" orient="auto">
+      <path d="M0,0 L10,6 L0,12 z" fill="#345a8a"/>
+    </marker>
+    <style>
+      .t{font-family:"Noto Sans CJK SC","PingFang SC","Microsoft YaHei",sans-serif;fill:#18324b}
+      .title{font-size:34px;font-weight:700;text-anchor:middle}
+      .subtitle{font-size:20px;text-anchor:middle;fill:#4a6480}
+      .label{font-size:22px;font-weight:600}
+      .small{font-size:17px;fill:#3a5570}
+      .node{fill:#eef4fa;stroke:#345a8a;stroke-width:2.5}
+      .nodeTitle{font-size:20px;font-weight:700;text-anchor:middle}
+      .nodeBody{font-size:16px;text-anchor:middle;fill:#3a5570}
+      .edge{stroke:#89a7c5;stroke-width:3;fill:none}
+      .axis{stroke:#18324b;stroke-width:3;fill:none}
+    </style>
+  </defs>
+
+  <rect width="100%" height="100%" fill="#ffffff"/>
+  <text class="t title" x="800" y="56">图11-2  X×Y×λ 光谱立方体与“像素谱 → 组分分布图”处理流程</text>
+  <text class="t subtitle" x="800" y="92">每个像素不仅有亮度或颜色，还对应一条光谱；空间位置—光谱信号—化学组分三者相互对应</text>
+
+  <!-- ============ 左：光谱立方体（等轴测） ============ -->
+  <!-- 立方体八个顶点：前下左 A(260,620) 前下右 B(560,620) 前上右 C(560,380) 前上左 D(260,380)
+       后下左 A'(380,540) 后下右 B'(680,540) 后上右 C'(680,300) 后上左 D'(380,300) -->
+  <!-- 顶面 -->
+  <polygon points="260,380 560,380 680,300 380,300" fill="url(#cubeFace)" stroke="#345a8a" stroke-width="2.5"/>
+  <!-- 右侧面 -->
+  <polygon points="560,620 680,540 680,300 560,380" fill="#bcd8ee" stroke="#345a8a" stroke-width="2.5"/>
+  <!-- 前面 -->
+  <polygon points="260,620 560,620 560,380 260,380" fill="url(#frontFace)" stroke="#345a8a" stroke-width="2.5"/>
+
+  <!-- 前面网格（X × Y） -->
+  <g stroke="#89a7c5" stroke-width="1.2" opacity="0.75">
+    <line x1="310" y1="380" x2="310" y2="620"/><line x1="360" y1="380" x2="360" y2="620"/>
+    <line x1="410" y1="380" x2="410" y2="620"/><line x1="460" y1="380" x2="460" y2="620"/>
+    <line x1="510" y1="380" x2="510" y2="620"/>
+    <line x1="260" y1="428" x2="560" y2="428"/><line x1="260" y1="476" x2="560" y2="476"/>
+    <line x1="260" y1="524" x2="560" y2="524"/><line x1="260" y1="572" x2="560" y2="572"/>
+  </g>
+  <!-- 顶面网格（X × λ 示意） -->
+  <g stroke="#89a7c5" stroke-width="1.2" opacity="0.75">
+    <line x1="310" y1="380" x2="430" y2="300"/><line x1="360" y1="380" x2="480" y2="300"/>
+    <line x1="410" y1="380" x2="530" y2="300"/><line x1="460" y1="380" x2="580" y2="300"/>
+    <line x1="510" y1="380" x2="630" y2="300"/>
+    <line x1="290" y1="360" x2="590" y2="360"/><line x1="320" y1="340" x2="620" y2="340"/>
+    <line x1="350" y1="320" x2="650" y2="320"/>
+  </g>
+
+  <!-- 选中像素与贯穿该像素的光谱柱 -->
+  <rect x="392" y="468" width="30" height="30" fill="#e8853d" stroke="#a85a1d" stroke-width="2"/>
+  <line x1="407" y1="468" x2="527" y2="388" stroke="#e8853d" stroke-width="2" stroke-dasharray="6,4"/>
+  <line x1="527" y1="388" x2="647" y2="308" stroke="#e8853d" stroke-width="2" stroke-dasharray="6,4"/>
+
+  <!-- 坐标轴 -->
+  <line class="axis" x1="260" y1="620" x2="600" y2="620" marker-end="url(#arrow)"/>
+  <line class="axis" x1="260" y1="620" x2="260" y2="340" marker-end="url(#arrow)"/>
+  <line class="axis" x1="560" y1="620" x2="700" y2="530" marker-end="url(#arrow)"/>
+  <text class="t label" x="610" y="638">x（空间坐标）</text>
+  <text class="t label" x="120" y="372">y（空间坐标）</text>
+  <text class="t label" x="612" y="516">λ（光谱轴）</text>
+  <text class="t small" x="360" y="680">像素 = 空间位置 (x, y) + 一条随 λ 变化的信号强度谱</text>
+
+  <!-- 像素谱小图（选中像素） -->
+  <g transform="translate(120,180)">
+    <rect x="0" y="0" width="300" height="150" rx="14" fill="#f6f9fc" stroke="#345a8a" stroke-width="2"/>
+    <text class="t nodeTitle" x="150" y="30">单像素光谱 I(λ)</text>
+    <line x1="36" y1="120" x2="270" y2="120" stroke="#18324b" stroke-width="2"/>
+    <line x1="36" y1="120" x2="36" y2="48" stroke="#18324b" stroke-width="2"/>
+    <path d="M36,110 L70,104 L95,62 L110,104 L150,96 L175,70 L190,100 L230,108 L270,102" fill="none" stroke="#e8853d" stroke-width="3"/>
+    <text class="t small" x="36" y="140">λ（波数 / 波长）</text>
+    <text class="t small" x="200" y="56">强度</text>
+  </g>
+
+  <!-- ============ 中：波段图 / 组分图示意 ============ -->
+  <g transform="translate(730,150)">
+    <text class="t nodeTitle" x="140" y="20">固定 λ → 波段图（空间二维）</text>
+    <rect x="10" y="40" width="260" height="220" rx="10" fill="#f6f9fc" stroke="#345a8a" stroke-width="2"/>
+    <g>
+      <rect x="30" y="60" width="60" height="60" fill="#7fb3d9"/>
+      <rect x="90" y="60" width="60" height="60" fill="#cfe3f1"/>
+      <rect x="150" y="60" width="60" height="60" fill="#7fb3d9"/>
+      <rect x="30" y="120" width="60" height="60" fill="#cfe3f1"/>
+      <rect x="90" y="120" width="60" height="60" fill="#e8853d"/>
+      <rect x="150" y="120" width="60" height="60" fill="#cfe3f1"/>
+      <rect x="30" y="180" width="60" height="60" fill="#7fb3d9"/>
+      <rect x="90" y="180" width="60" height="60" fill="#cfe3f1"/>
+      <rect x="150" y="180" width="60" height="60" fill="#7fb3d9"/>
+    </g>
+    <text class="t small" x="140" y="292" text-anchor="middle">同一波长切片上的信号强度空间分布</text>
+  </g>
+
+  <!-- ============ 右：处理流程 ============ -->
+  <g>
+    <rect class="node" x="1200" y="150" width="330" height="80" rx="16"/>
+    <text class="t nodeTitle" x="1365" y="184">原始光谱立方体</text>
+    <text class="t nodeBody" x="1365" y="212">X×Y×λ，保留坐标轴、单位与样品身份</text>
+
+    <line class="edge" x1="1365" y1="230" x2="1365" y2="266" marker-end="url(#arrow)"/>
+    <rect class="node" x="1200" y="270" width="330" height="80" rx="16"/>
+    <text class="t nodeTitle" x="1365" y="304">预处理</text>
+    <text class="t nodeBody" x="1365" y="332">去噪、背景扣除、平场校正与配准</text>
+
+    <line class="edge" x1="1365" y1="350" x2="1365" y2="386" marker-end="url(#arrow)"/>
+    <rect class="node" x="1200" y="390" width="330" height="80" rx="16"/>
+    <text class="t nodeTitle" x="1365" y="424">特征提取 / 降维</text>
+    <text class="t nodeBody" x="1365" y="452">PCA、MCR；展开矩阵会暂时丢失空间邻域</text>
+
+    <line class="edge" x1="1365" y1="470" x2="1365" y2="506" marker-end="url(#arrow)"/>
+    <rect class="node" x="1200" y="510" width="330" height="80" rx="16"/>
+    <text class="t nodeTitle" x="1365" y="544">分割 / 组分映射</text>
+    <text class="t nodeBody" x="1365" y="572">阈值、形态学、CNN / U-Net 或组分拟合</text>
+
+    <line class="edge" x1="1365" y1="590" x2="1365" y2="626" marker-end="url(#arrow)"/>
+    <rect x="1200" y="630" width="330" height="80" rx="16" fill="#dceaf7" stroke="#345a8a" stroke-width="3"/>
+    <text class="t" x="1365" y="664" fill="#18324b" font-weight="700" font-size="20" text-anchor="middle">组分空间分布图</text>
+    <text class="t" x="1365" y="692" fill="#3a5570" font-size="16" text-anchor="middle">每个空间位置对应候选化学组分</text>
+  </g>
+
+  <!-- 底部提示 -->
+  <g transform="translate(120,760)">
+    <rect x="0" y="0" width="600" height="80" rx="14" fill="#fbf3ec" stroke="#e8853d" stroke-width="2"/>
+    <text class="t label" x="24" y="34">注意</text>
+    <text class="t small" x="24" y="62">先逐像素预处理可能放大低信号区域噪声；先空间平滑又可能混合边界，方案须在原始立方体上比较。</text>
+  </g>
+</svg>
